@@ -14,6 +14,8 @@ from keras import backend as K
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 
+
+
 K.set_image_dim_ordering('th')
 
 import os, json
@@ -67,7 +69,7 @@ seed = 7
 np.random.seed(seed)
 import pandas as pd
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(imgs, labels, test_size = 0.1)
+X_train, X_test, y_train, y_test = train_test_split(imgs, labels, test_size = 3144)
 X_train = np.stack(X_train, axis=0)
 y_train = np.stack(y_train, axis=0)
 X_test = np.stack(X_test, axis=0)

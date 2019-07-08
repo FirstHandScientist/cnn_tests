@@ -6,6 +6,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 import os, json
+from utils import prepare_norb
 
 batch_size = 32
 num_classes = 100
@@ -14,17 +15,22 @@ data_augmentation = False
 num_predictions = 20
 save_dir = os.path.join(os.getcwd(), 'saved_models')
 
-data_list = {"cifar100": cifar100}
+data_list = {"norb": "norb"}
+data_list = {"cifar10": cifar10}
 
 # data_list = {"cifar10": cifar10,
 #              "mnist": mnist,
 #              "fashion_mnist": fashion_mnist}
+
+
 
 for key, dataset in data_list.items():
     model_name = '{}_trained_model.h5'.format(key)
     record_name = "{}_trained_history.txt".format(key)
     # The data, split between train and test sets:
     (x_train, y_train), (x_test, y_test) = dataset.load_data()
+    #(x_train, x_test, y_train, y_test) = prepare_norb()
+
     try:
         x_train.shape[3]
     except:
